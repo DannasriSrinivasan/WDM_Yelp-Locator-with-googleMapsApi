@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- Student Name: Dannasri Srinivasan  -->
+<html lang="en">
+  <head>
+    <title>Web Mashup: Display Best Restaurants on a Map</title>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="yelp.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    </script>  
+    <style>
+
+      form {
+        text-align: center;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      a {
+        font-size: 20px;
+        font-weight: bold;
+        color: purple;
+      }
+      li {
+        float: left;
+        display: block;
+        text-align: center;
+        padding: 16px;
+        text-decoration: none;
+        word-wrap: break-word;
+        width: 669px;
+        height: 400px;
+      }
+      input{
+        border-radius: 10px;
+        padding: 13px;
+        color: darkred;
+        font-weight: bold;
+        font-size: large;
+      }
+      h3{
+        font-variant: petite-caps;
+        color: darkred;
+        font-size: x-large;
+      }
+      
+    </style>      
+  </head>
+  <body style="background-color: beige;">
+    <form>
+       <label>
+         <h3>Search : </h3>
+         <input type="text" id="search"/>
+      </label>
+       <input type="button" id = "find-button" onclick="sendRequest();" value="Find" style="font-variant: petite-caps;"/>
+    </form>
+    <script>
+      var input = document.getElementById("search");
+      input.addEventListener("keypress", function(event) {
+        if (event.keyCode === 13) {
+         event.preventDefault();
+         document.getElementById("find-button").click();
+        }
+      });
+      </script>
+    <p>
+      <div id="map" style="width: 600px; height: 500px; margin-left: 30%;"></div><br/>
+      <script>
+        var map;
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 32.75, lng: -97.13},
+            zoom: 16
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBDA5zG6JR2O6sGQUEvP_xpBiOWoyxSKU&callback=initMap"
+        async>
+      </script>
+  </p>
+  </body>
+</html>
